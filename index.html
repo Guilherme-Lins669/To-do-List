@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO LIST</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>TODO LIST</h1>
+            <p>Organize suas tarefas</p>
+        </header>
+
+        <div class="messages" id="messages" aria-live="polite"></div>
+
+        <section class="add-task-section">
+            <h2>Nova tarefa</h2>
+
+            <form id="task-form" class="task-form">
+                <input
+                    type="text"
+                    id="title-input"
+                    name="title"
+                    placeholder="Digite sua tarefa..."
+                    maxlength="200"
+                    required
+                >
+
+                <select id="priority-select" name="priority">
+                    <option value="Alta">Alta</option>
+                    <option value="Média" selected>Média</option>
+                    <option value="Baixa">Baixa</option>
+                </select>
+
+                <button type="submit" class="btn-add" id="btn-add">
+                    Adicionar tarefa
+                </button>
+            </form>
+
+            <p class="limit-warning" id="limit-warning" hidden>Limite de 10 tarefas atingido.</p>
+        </section>
+
+        <section class="tasks-section">
+            <div class="tasks-header">
+                <div>
+                    <h2>MINHAS TAREFAS</h2>
+                    <p class="drag-help">Arraste as tarefas para alterar a ordem.</p>
+                </div>
+            </div>
+
+            <p class="empty-state" id="empty-state" hidden>Nenhuma tarefa cadastrada ainda.</p>
+
+            <ul class="task-list" id="task-list"></ul>
+        </section>
+
+        <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
