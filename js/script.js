@@ -191,7 +191,7 @@ function showToast(message, onUndo) {
         const undoButton = document.createElement("button");
         undoButton.type = "button";
         undoButton.className = "toast-undo";
-        undoButton.textContent = "Desfazer";
+        undoButton.textContent = "↺ Desfazer";
         undoButton.addEventListener("click", onUndo);
         toast.appendChild(undoButton);
     }
