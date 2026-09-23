@@ -324,6 +324,32 @@ body {
     opacity: 1;
 }
 
+.toast.has-action {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    white-space: nowrap;
+}
+
+.toast.show.has-action {
+    pointer-events: auto;
+}
+
+.toast-undo {
+    background: none;
+    border: none;
+    color: #8ab4ff;
+    font-weight: 600;
+    font-size: inherit;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+.toast-undo:hover {
+    text-decoration: underline;
+}
+
 @media (max-width: 600px) {
     .task-item {
         flex-wrap: wrap;
