@@ -123,15 +123,34 @@ function completeTask(taskId) {
 
 function deleteTask(taskId) {
     let tasks = loadTasks();
-    const exists = tasks.some((t) => t.id === taskId);
+    const removedTask = tasks.find((t) => t.id === taskId);
 
     tasks = tasks.filter((t) => t.id !== taskId);
 
-    if (exists) {
+    if (removedTask) {
         saveTasks(tasks);
-        showToast("Tarefa removida com sucesso!");
+        showToast("Tarefa removida com sucesso!", () => restoreTask(removedTask));
     }
 
+    render();
+}
+
+function restoreTask(task) {
+    const tasks = loadTasks();
+
+    if (tasks.length >= MAX_TASKS) {
+        showToast("Limite de 10 tarefas atingido. Não foi possível desfazer.");
+        return;
+    }
+
+    // Se o id foi reaproveitado por uma tarefa nova, gera outro para evitar conflito.
+    if (tasks.some((t) => t.id === task.id)) {
+        task.id = nextId(tasks);
+    }
+
+    tasks.push(task);
+    saveTasks(tasks);
+    showToast("Tarefa restaurada!");
     render();
 }
 
@@ -161,17 +180,28 @@ function reorderTasks(orderedIds) {
 
 let toastTimeout = null;
 
-function showToast(message) {
+function showToast(message, onUndo) {
     const toast = document.getElementById("toast");
     if (!toast) return;
 
     toast.textContent = message;
+    toast.classList.toggle("has-action", typeof onUndo === "function");
+
+    if (typeof onUndo === "function") {
+        const undoButton = document.createElement("button");
+        undoButton.type = "button";
+        undoButton.className = "toast-undo";
+        undoButton.textContent = "Desfazer";
+        undoButton.addEventListener("click", onUndo);
+        toast.appendChild(undoButton);
+    }
+
     toast.classList.add("show");
 
     clearTimeout(toastTimeout);
     toastTimeout = setTimeout(() => {
         toast.classList.remove("show");
-    }, 3000);
+    }, onUndo ? 6000 : 3000);
 }
 
 /* ---------- Renderização ---------- */
