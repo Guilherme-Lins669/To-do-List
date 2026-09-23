@@ -325,34 +325,93 @@ body {
 }
 
 @media (max-width: 600px) {
+    body {
+        padding: 10px 0;
+    }
+
+    .container {
+        padding: 0 8px;
+    }
+
+    .header {
+        margin-bottom: 12px;
+    }
+
+    .header h1 {
+        font-size: 1.35rem;
+    }
+
+    .header p {
+        font-size: .75rem;
+    }
+
+    .add-task-section,
+    .tasks-section {
+        padding: 12px;
+        margin-bottom: 12px;
+        border-radius: 7px;
+    }
+
+    .add-task-section h2,
+    .tasks-section h2 {
+        font-size: .85rem;
+        margin-bottom: 8px;
+    }
+
+    .task-form {
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    /* Mantém o campo de tarefa compacto no celular. */
+    .task-form input[type="text"],
+    .task-form select,
+    .btn-add {
+        width: 100%;
+        height: 34px;
+        min-height: 34px;
+        padding: 6px 9px;
+        font-size: .8rem;
+    }
+
+    .task-form input[type="text"] {
+        flex: none;
+    }
+
+    .btn-add {
+        padding: 6px 10px;
+    }
+
     .task-item {
         flex-wrap: wrap;
+        gap: 7px;
+        padding: 9px;
     }
 
     .task-actions {
         width: 100%;
         justify-content: flex-end;
-        margin-top: 6px;
+        margin-top: 4px;
     }
 
-    .task-form {
-        flex-direction: column;
+    .drag-help {
+        font-size: .7rem;
+        margin-bottom: 8px;
     }
 
-    .task-form input[type="text"],
-    .task-form select,
-    .btn-add {
-        width: 100%;
+    .empty-state {
+        padding: 14px 0;
+        font-size: .75rem;
     }
 }
 
 @media (max-width: 400px) {
     .header h1 {
-        font-size: 1.6rem;
+        font-size: 1.25rem;
     }
 
     .add-task-section,
     .tasks-section {
-        padding: 14px;
+        padding: 10px;
     }
 }
