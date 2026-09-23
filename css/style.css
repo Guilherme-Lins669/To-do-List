@@ -331,23 +331,50 @@ body {
     white-space: nowrap;
 }
 
+.toast.has-action {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+    padding: 6px 8px 6px 20px;
+    border-radius: 999px;
+}
+
 .toast.show.has-action {
     pointer-events: auto;
 }
 
-.toast-undo {
-    background: none;
+.toast.has-action .toast-undo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: #4a6485;
     border: none;
-    color: #8ab4ff;
+    color: #cbdcff;
     font-weight: 600;
     font-size: inherit;
     cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: .5px;
+    text-transform: none;
+    letter-spacing: 0;
+    padding: 9px 14px;
+    border-radius: 999px;
+    transition: background .2s ease, transform .15s ease;
 }
 
-.toast-undo:hover {
-    text-decoration: underline;
+.toast.has-action .toast-undo::before {
+    content: "↶";
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.toast.has-action .toast-undo:hover {
+    background: #58759a;
+    text-decoration: none;
+}
+
+.toast.has-action .toast-undo:active {
+    transform: scale(.97);
 }
 
 @media (max-width: 600px) {
